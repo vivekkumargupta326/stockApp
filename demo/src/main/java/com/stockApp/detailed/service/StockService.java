@@ -14,4 +14,5 @@ public interface StockService {
     List<String> getAllStocks();
 
     void deleteStock(String symbol);
+
 }

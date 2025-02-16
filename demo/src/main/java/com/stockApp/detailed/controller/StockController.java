@@ -33,4 +33,5 @@ public class StockController {
         stockService.addStock(symbol);
         return new ResponseEntity<>("Added successfully", HttpStatus.OK);
     }
+
 }

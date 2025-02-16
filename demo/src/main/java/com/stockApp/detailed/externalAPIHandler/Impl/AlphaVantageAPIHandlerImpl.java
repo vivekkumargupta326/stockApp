@@ -1,8 +1,9 @@
-package com.stockApp.detailed.externalAPIHandler;
+package com.stockApp.detailed.externalAPIHandler.Impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.stockApp.detailed.externalAPIHandler.ExternalAPIHandler;
 import com.stockApp.detailed.model.Stock;
 import com.stockApp.detailed.service.CacheService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class AlphaVantageAPIHandlerImpl implements ExternalAPIHandler{
+public class AlphaVantageAPIHandlerImpl implements ExternalAPIHandler {
 
     private final RestTemplate restTemplate;
     private final CacheService redisCacheService;

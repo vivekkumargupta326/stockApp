@@ -8,6 +8,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -33,5 +34,21 @@ public class RedisCacheService implements CacheService {
     @Override
     public void deleteStock(String symbol) {
         redisTemplate.delete(symbol);
+    }
+
+    @Override
+    public String getToken(String userId) {
+        return redisTemplate.opsForValue().get(userId);
+    }
+
+    @Override
+    public String generateToken(String userId) {
+        Object token = redisTemplate.opsForValue().get(userId);
+        if (token == null) {
+            String newToken = UUID.randomUUID().toString();
+            redisTemplate.opsForValue().set(userId, newToken);
+            return newToken;
+        }
+        return (String)token;
     }
 }

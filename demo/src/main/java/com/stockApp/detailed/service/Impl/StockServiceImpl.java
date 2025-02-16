@@ -5,19 +5,19 @@ import com.stockApp.detailed.model.Stock;
 import com.stockApp.detailed.service.CacheService;
 import com.stockApp.detailed.service.StockService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
 public class StockServiceImpl implements StockService {
 
-    private final Set<String> trackedStocks = new HashSet<>();
+    private Set<String> trackedStocks = new HashSet<>();
     private final CacheService redisCacheService;
+    private Map<String, String> testMap = new HashMap<>();
 
     @Override
     public List<Stock> getStockPrice() throws StockNotFoundException {
@@ -58,4 +58,5 @@ public class StockServiceImpl implements StockService {
         trackedStocks.remove(symbol);
         redisCacheService.deleteStock(symbol);
     }
+
 }
