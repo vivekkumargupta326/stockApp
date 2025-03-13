@@ -16,6 +16,7 @@ import java.util.List;
 public class StockController {
 
     private final StockService stockService;
+
     @GetMapping(path = "/get/stock")
     public ResponseEntity<?> getAllStocks() throws StockNotFoundException {
         List<Stock> stocks = stockService.getStockPrice();
