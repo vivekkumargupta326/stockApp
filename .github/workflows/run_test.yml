@@ -26,6 +26,11 @@ jobs:
           key: maven-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             maven-${{ runner.os }}-
-
+            
+      - name: Debug - List files
+        run: ls -R
+        
       - name: Run tests
-        run: mvn test  # Use 'mvn test' if using Maven
+        run: |
+          cd ./demo
+          mvn test  # Use 'mvn test' if using Maven
