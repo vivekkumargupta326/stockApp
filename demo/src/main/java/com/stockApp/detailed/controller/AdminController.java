@@ -17,15 +17,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/stockApp")
 public class AdminController {
     private final StockService stockService;
-    @Value("${api.key}")
+    @Value("${alphaVantage.api.key}")
     private String apiKey;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @PostMapping(path = "/delete/stock")
     public ResponseEntity<?> deleteStockBySymbol(@RequestHeader(value = "stock-symbol") String symbol) {
         stockService.deleteStock(symbol);
         return new ResponseEntity<>("Deleted", HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/get/test")
+    public void getTest() {
+        return;
     }
 }
