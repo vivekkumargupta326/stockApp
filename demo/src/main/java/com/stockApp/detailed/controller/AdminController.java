@@ -28,4 +28,9 @@ public class AdminController {
         stockService.deleteStock(symbol);
         return new ResponseEntity<>("Deleted", HttpStatus.OK);
     }
+
+    @GetMapping(path = "/get/test")
+    public void getTest() {
+        return;
+    }
 }
