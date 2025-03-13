@@ -32,5 +32,5 @@ jobs:
         
       - name: Run tests
         run: |
-          cd stockApp/demo
+          cd ./demo
           mvn test  # Use 'mvn test' if using Maven
