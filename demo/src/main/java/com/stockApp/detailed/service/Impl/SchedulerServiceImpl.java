@@ -19,7 +19,7 @@ public class SchedulerServiceImpl implements SchedulerService {
     private final StockService stockService;
     private final ExternalAPIHandler externalAPIHandler;
 
-    @Scheduled(fixedRate = 60000)
+    @Scheduled(fixedDelay = 60000)
     public void updateStockPrices() {
         externalAPIHandler.updateStockPrice(stockService.getAllStocks());
     }
